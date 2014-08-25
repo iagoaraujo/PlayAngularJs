@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sistema de Hackfests</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/style.css")">
+<script
+	src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+
+</head>
+<body>
+	<div  ng-app="" ng-controller="customersController">
+		<div  class="log" ng-repeat="x in posts">
+			<h1>{{x.msg}}</h1>
+			<a href="#" ng-click="show_comments=true">{{x.comments.length}}</a>
+			
+			<div ng-show="show_comments" class="comments">
+				<button ng-click="show_comments=false">Hide</button>
+				<div ng-repeat="y in x.comments">
+					<h2>{{y.msg}}</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script>
+		function customersController($scope,$http) {
+  			$http.get("http://localhost:9000/post")
+  			.success(function(response) {$scope.posts = response;});
+  			$scope.show_comments=false;
+		}
+	</script>
+
+</body>
+
+</html>
