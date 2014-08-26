@@ -13,13 +13,13 @@
 	<div ng-app="" ng-controller="customersController">
 	<button ng-click="refresh()">Refresh</button>
 		<div  class="log" ng-repeat="x in posts">
-			<h1>{{x.msg}}</h1>
+			<h3>{{x.msg}}</h3>
 			<a href="" ng-click="show_comments=true">{{x.comments.length}}</a>
 			
 			<div ng-show="show_comments" class="comments">
-				<button ng-click="show_comments=false">Hide</button>
+				<a href="" ng-click="show_comments=false">Hide</a>
 				<div ng-repeat="y in x.comments">
-					<h2>{{y.msg}}</h2>
+					<h4>{{y.msg}}</h4>
 				</div>
 			</div>
 		</div>
